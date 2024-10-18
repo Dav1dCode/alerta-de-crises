@@ -1,12 +1,11 @@
 import axios from 'axios';
 
-const fetchData = async () => {
+export const fetchAlertas = async () => {
     try {
-        const response = await axios.get('http://localhost:3000/alertas');
-        console.log(response.data);
+        const response = await axios.get('/api/alertas'); 
+        return response.data; 
     } catch (error) {
-        console.error('Erro ao buscar dados:', error);
+        console.error('Erro ao buscar alertas:', error);
+        throw error; 
     }
 };
-
-export default fetchData;
