@@ -1,17 +1,12 @@
 const express = require('express');
+const alertasRouter = require('./routes/alertas');
+
 const app = express();
-const port = 3000;
-
-const alertasRoutes = require('./routes/alertas');
-
 app.use(express.json());
 
-app.use('/alertas', alertasRoutes);
+app.use('/api/alertas', alertasRouter); 
 
-app.get('/', (req, res) => {
-    res.send('Bem-vindo ao sistema de alerta de crises de Belo Horizonte');
-});
-
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
-    console.log(`API de alertas de crises rodando em http://localhost:${port}`);
+    console.log(`Servidor rodando na porta ${port}`);
 });
