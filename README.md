@@ -8,7 +8,6 @@ Este projeto é uma aplicação web simples para exibir alertas de crises, permi
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Instalação](#instalação)
 - [Uso](#uso)
-- [Estrutura do Projeto](#estrutura-do-projeto)
 - [Contribuição](#contribuição)
 - [Licença](#licença)
 
