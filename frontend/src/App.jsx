@@ -1,13 +1,13 @@
 import React from 'react';
-import AlertasList from './components/AlertasList';
-import './App.css'; 
+import './App.css';
+import LandingPage from './components/LandingPage';
 
-const App = () => {
+function App() {
     return (
-        <div>
-            <AlertasList />
+        <div className="App">
+            <LandingPage />
         </div>
     );
-};
+}
 
 export default App;

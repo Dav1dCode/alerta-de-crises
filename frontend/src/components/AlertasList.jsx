@@ -1,31 +1,29 @@
-// src/components/AlertasList.jsx
 import React, { useEffect, useState } from 'react';
-import { fetchAlertas } from '../api'; // Importa a função fetchAlertas do api.js
+import { fetchAlertas } from '../api';
 
 const AlertasList = () => {
-    const [alertas, setAlertas] = useState([]); // Estado para armazenar os alertas
-    const [loading, setLoading] = useState(true); // Estado para controle de carregamento
+    const [alertas, setAlertas] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const loadAlertas = async () => {
             try {
-                const data = await fetchAlertas(); // Chama a função para buscar os alertas
-                setAlertas(data); // Atualiza o estado com os alertas recebidos
+                const data = await fetchAlertas();
+                setAlertas(data);
             } catch (error) {
                 console.error('Erro ao buscar alertas:', error);
             } finally {
-                setLoading(false); // Finaliza o carregamento
+                setLoading(false);
             }
         };
 
-        loadAlertas(); // Executa a função de carregamento dos alertas
-    }, []); // O array vazio [] indica que o efeito deve rodar apenas uma vez após a montagem do componente
+        loadAlertas();
+    }, []);
 
-    if (loading) return <div>Carregando...</div>; // Retorna uma mensagem de carregamento enquanto busca os dados
+    if (loading) return <div>Carregando...</div>;
 
     return (
         <div>
-            <h1>Alertas de Crises</h1>
             <ul>
                 {alertas.map((alerta) => (
                     <li key={alerta.id}>
