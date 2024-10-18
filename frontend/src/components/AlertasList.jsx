@@ -7,14 +7,16 @@ const AlertasList = () => {
 
     useEffect(() => {
         const loadAlertas = async () => {
+            console.log('Iniciando a busca de alertas');
             try {
                 const data = await fetchAlertas();
-                console.log('Dados retornados da API:', data);
+                console.log('Dados retornados da API:', data); 
                 setAlertas(data);
             } catch (error) {
-                console.error('Erro ao buscar alertas:', error);
+                console.error('Erro ao buscar alertas:', error); 
             } finally {
                 setLoading(false);
+                console.log('Busca de alertas finalizada'); 
             }
         };
 
