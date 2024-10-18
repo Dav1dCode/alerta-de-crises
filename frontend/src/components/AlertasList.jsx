@@ -1,43 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import { fetchAlertas } from '../api';
-
-const AlertasList = () => {
-    const [alertas, setAlertas] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const loadAlertas = async () => {
-            try {
-                const data = await fetchAlertas();
-                setAlertas(data);
-            } catch (error) {
-                console.error('Erro ao buscar alertas:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        loadAlertas();
-    }, []);
-
-    if (loading) return <div>Carregando...</div>;
-
-    return (
-        <div>
-            <ul>
-                {alertas.map((alerta) => (
-                    <li key={alerta.id}>
-                        <h2>{alerta.tipo}</h2>
-                        <p>{alerta.descricao}</p>
-                        <p><strong>Data:</strong> {alerta.data}</p>
-                        <p><strong>Local:</strong> {alerta.local}</p>
-                        <p><strong>Gravidade:</strong> {alerta.gravidade}</p>
-                        <p><strong>Status:</strong> {alerta.ativo ? 'Ativo' : 'Inativo'}</p>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
+export const fetchAlertas = async () => {
+    return [
+        {
+            id: 1,
+            tipo: 'Inundação',
+            descricao: 'Inundação severa devido a fortes chuvas na região.',
+            data: '2024-10-18',
+            local: 'Rio de Janeiro',
+            gravidade: 'Alta',
+            ativo: true,
+        },
+        {
+            id: 2,
+            tipo: 'Terremoto',
+            descricao: 'Tremor de terra sentido com magnitude 6.5.',
+            data: '2024-10-17',
+            local: 'São Paulo',
+            gravidade: 'Moderada',
+            ativo: false,
+        },
+        {
+            id: 3,
+            tipo: 'Deslizamento',
+            descricao: 'Deslizamento de terra em área de encosta.',
+            data: '2024-10-15',
+            local: 'Minas Gerais',
+            gravidade: 'Alta',
+            ativo: true,
+        }
+    ];
 };
-
-export default AlertasList;
